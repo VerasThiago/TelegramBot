@@ -10,7 +10,7 @@ for i in range(len(palavroes)):
 
 
 
-def getPalavrao(msg,id):
+def getPalavrao(msg,id,name):
 	for palavra in msg.split():
 		if(palavra.lower() in palavroes):
 			bot.sendMessage(id, name + ' para de xingar, porra')
@@ -54,7 +54,7 @@ def getMessage(message):
 	#if(func[0] == '/build'):
 	#	getBuild(func[1],id)
 	
-	getPalavrao(msg,id)
+	getPalavrao(msg,id,name)
 
 
 
