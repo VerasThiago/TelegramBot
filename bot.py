@@ -51,8 +51,8 @@ def getMessage(message):
 
 	func = msg.split(' ',1)
 
-	if(func[0] == '/build'):
-		getBuild(func[1],id)
+	#if(func[0] == '/build'):
+	#	getBuild(func[1],id)
 	
 	getPalavrao(msg,id)
 
