@@ -7,19 +7,61 @@ for i in range(len(palavroes)):
 	palavroes[i] = palavroes[i].lower()
 
 
+
+def getPalavrao(msg,id):
+	for palavra in msg.split():
+		if(palavra.lower() in palavroes):
+			bot.sendMessage(id, name + ' para de xingar, porra')
+			break
+			
+def getBuild(busca,id):
+
+	url = 'https://www.probuilds.net/champions/details/' + busca
+
+	r = requests.get(url,stream=True)
+
+	soup = BeautifulSoup(r.text, 'html.parser')
+	divTag = soup.find_all("div", {"class":"item tooltip"})
+
+	i = 1
+
+	if(len(divTag) == 0):
+		bot.sendMessage(id, busca + ' não encontrado')
+
+
+	for tag in divTag:
+		if(i > 6):
+			break
+		palavra = str(tag)
+		palavra = palavra.split('src="')
+		palavra[1] = palavra[1][:-10]
+		bot.sendPhoto(id,palavra[1])
+		print(palavra[1])
+		i += 1
+
 def getMessage(message):
 	msg = message['text']
 	id = message['chat']['id']
 	name = message['from']['first_name']
 
 	print('Id :', id, 'Nome :',name, 'Mensagem :', msg)
+	
 
-	for palavra in msg.split():
-		if(palavra.lower() in palavroes):
-			bot.sendMessage(id, name + ' para de xingar, porra')
-			break
-			
+	func = msg.split(' ',1)
 
+	if(func[0] == '/build'):
+		getBuild(func[1],id)
+	
+	getPalavrao(msg,id)
+
+
+
+	
+
+
+
+
+	
 
 bot.message_loop(getMessage)
 
