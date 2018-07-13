@@ -1,3 +1,5 @@
+import requests                                                                                                                                                                                                    
+from bs4 import BeautifulSoup
 import telepot
 
 bot = telepot.Bot("573177973:AAHRwV6IsmBSGllKx8MZQ_3PdonRqHB_aN0")
