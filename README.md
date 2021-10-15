@@ -1,2 +1,2 @@
 # Telegram-Bot
-Bot that I made to train Python
+Bot que eu fiz para melhorar minha linguagem de Python
